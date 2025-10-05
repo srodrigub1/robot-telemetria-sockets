@@ -1,0 +1,87 @@
+##############################################
+# .gitignore general del proyecto
+# Proyecto: Robot de Telemetria (C + Python + Java)
+# Equipo de 2 personas
+##############################################
+
+# === Archivos y carpetas generales ===
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# === Servidor en C (server/) ===
+# Archivos objeto y binarios compilados
+*.o
+*.out
+*.exe
+server
+robotd
+logs.txt
+temp/
+*.tmp
+
+# === Cliente Python (client-python/) ===
+# Entornos virtuales
+venv/
+.env/
+env/
+# Archivos cache de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+# Archivos de configuración o locales
+config_local.json
+settings_local.json
+# Logs y temporales
+*.log
+*.tmp
+
+# === Cliente Java (client-java/) ===
+# Archivos compilados
+*.class
+# Carpetas de build
+/build/
+out/
+target/
+# Archivos de IDE
+.idea/
+.vscode/
+*.iml
+
+# === Pruebas y resultados ===
+tests/__pycache__/
+test_output/
+coverage/
+__testcache__/
+*.json
+*.csv
+*.xml
+
+# === Archivos del sistema o editor ===
+# VSCode / JetBrains
+.vscode/
+.idea/
+# Archivos de sistema
+ehthumbs.db
+Desktop.ini
+
+# === Archivos de documentación temporales ===
+*.aux
+*.log
+*.toc
+*.pdf~
+*.bak
+
+# === Archivos ignorados por error de compilación o ejecución ===
+core
+*.core
+*.stackdump
+
+##############################################
+# Fin del archivo .gitignore
+##############################################
