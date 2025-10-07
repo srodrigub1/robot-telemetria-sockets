@@ -6,7 +6,7 @@
   #include <winsock2.h>
   #include <ws2tcpip.h>
   #pragma comment(lib, "ws2_32.lib")
-  typedef int socklen_t;  // en Windows no siempre está definido
+  typedef int socklen_t; 
 #else
   // --- Linux / Unix ---
   #include <sys/socket.h>
