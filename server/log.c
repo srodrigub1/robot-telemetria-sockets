@@ -21,7 +21,7 @@ void log_init(const char *path){
 }
 void log_close(void){ if (g_logf){ fclose(g_logf); g_logf=NULL; } }
 
-void logf(const char *fmt, ...){
+void log_msgf(const char *fmt, ...){
     pthread_mutex_lock(&log_mx);
     char ts[32]; now_iso(ts,sizeof ts);
     fprintf(stdout,"[%s] ", ts);

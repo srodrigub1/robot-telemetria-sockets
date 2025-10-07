@@ -33,6 +33,7 @@ typedef struct {
     bool in_use;
     bool is_admin;
     unsigned subs_mask;
+  char user[64];
     char token[TOKEN_SZ];
 } client_t;
 

@@ -3,6 +3,6 @@
 #include <stddef.h>
 #include <stdbool.h>
 void auth_init(void);
-bool auth_check(const char *user,const char *pass);
+bool auth_check(const char *user,const char *pass,bool *is_admin);
 void auth_make_token(char *out,size_t n);
 #endif

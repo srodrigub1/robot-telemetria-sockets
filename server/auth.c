@@ -1,11 +1,33 @@
 #include "auth.h"
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
-void auth_init(void){ /* aquí podrías cargar archivo users.db */ }
+typedef struct {
+    const char *user;
+    const char *pass;
+    bool is_admin;
+} credential_t;
 
-bool auth_check(const char *u,const char *p){
-    return (u && p && strcmp(u,"admin")==0 && strcmp(p,"admin")==0);
+static const credential_t g_creds[] = {
+    {"victor",    "1234",  false},
+    {"sebastian", "1234",  false},
+    {"admin",     "12345", true }
+};
+
+void auth_init(void){
+    srand((unsigned)time(NULL));
+}
+
+bool auth_check(const char *u,const char *p,bool *is_admin){
+    if(!u || !p) return false;
+    for(size_t i=0;i<sizeof(g_creds)/sizeof(g_creds[0]);++i){
+        if(strcmp(g_creds[i].user,u)==0 && strcmp(g_creds[i].pass,p)==0){
+            if(is_admin) *is_admin = g_creds[i].is_admin;
+            return true;
+        }
+    }
+    return false;
 }
 
 void auth_make_token(char *out,size_t n){
