@@ -60,7 +60,7 @@ Puedes optar por el cliente en C o el cliente en Python: ambos hablan el mismo p
 
 ## Puertos y red
 
-- El ejecutable del servidor acepta el puerto como primer argumento. Si tu profesor necesita usar otro valor, basta con arrancar `./server <puerto>` y pasar ese mismo puerto al cliente. No es necesario recompilar.
+- El ejecutable del servidor acepta el puerto como primer argumento. Si necesita usar otro valor, basta con arrancar `./server <puerto>` y pasar ese mismo puerto al cliente. No es necesario recompilar.
 - El reenvío de puertos que tengas configurado para SSH (por ejemplo, `2222 -> 22`) es independiente: puedes crear otra regla para el puerto del servidor, por ejemplo `15000 -> 15000`, o elegir cualquier puerto libre del host.
 - Si prefieres modo *bridged*, simplemente apunta el cliente a la IP real de la VM y al puerto elegido.
 - Asegúrate de que el firewall de la VM permita el puerto seleccionado (`ufw allow <puerto>/tcp`) si está habilitado.
