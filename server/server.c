@@ -13,6 +13,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <stdarg.h>
+#include <strings.h>
 
 #define BODY_BUF_SZ 1024
 
@@ -249,15 +250,19 @@ static int read_request(client_t *client, req_t *req, char *body, size_t body_ca
         if(strncasecmp(line,"Client-Id:",10)==0){
             value = line+10;
             trim_inplace(value);
-            snprintf(req->client_id,sizeof req->client_id,"%s",value);
+            /* copy safely, limit to buffer size-1 */
+            snprintf(req->client_id, sizeof req->client_id, "%.*s",
+                     (int)sizeof req->client_id - 1, value);
         }else if(strncasecmp(line,"Vars:",5)==0){
             value = line+5;
             trim_inplace(value);
-            snprintf(req->vars,sizeof req->vars,"%s",value);
+            snprintf(req->vars, sizeof req->vars, "%.*s",
+                     (int)sizeof req->vars - 1, value);
         }else if(strncasecmp(line,"Token:",6)==0){
             value = line+6;
             trim_inplace(value);
-            snprintf(req->token,sizeof req->token,"%s",value);
+            snprintf(req->token, sizeof req->token, "%.*s",
+                     (int)sizeof req->token - 1, value);
         }else if(strncasecmp(line,"Content-Length:",15)==0){
             value = line+15;
             trim_inplace(value);

@@ -26,7 +26,8 @@ void world_init(void){
 
 void world_get_pos(int *x,int *y){
     pthread_mutex_lock(&mx);
-    if(x)*x=g_x; if(y)*y=g_y;
+    if(x) *x = g_x;
+    if(y) *y = g_y;
     pthread_mutex_unlock(&mx);
 }
 
@@ -51,21 +52,28 @@ world_status_t world_move(world_dir_t dir,int steps,int *ox,int *oy){
             case DIR_UP:    ny=y-1; break;
             case DIR_DOWN:  ny=y+1; break;
             default:
-                if(ox)*ox=x; if(oy)*oy=y; pthread_mutex_unlock(&mx);
-                return WORLD_INVALID_DIR;
+                    if(ox) *ox = x;
+                    if(oy) *oy = y;
+                    pthread_mutex_unlock(&mx);
+                    return WORLD_INVALID_DIR;
         }
         if(!inb(nx,ny)){
-            if(ox)*ox=x; if(oy)*oy=y; pthread_mutex_unlock(&mx);
-            return WORLD_OOB;
+                if(ox) *ox = x;
+                if(oy) *oy = y;
+                pthread_mutex_unlock(&mx);
+                return WORLD_OOB;
         }
         if(g_map[ny][nx]==1){
-            if(ox)*ox=x; if(oy)*oy=y; pthread_mutex_unlock(&mx);
-            return WORLD_OBSTACLE;
+                if(ox) *ox = x;
+                if(oy) *oy = y;
+                pthread_mutex_unlock(&mx);
+                return WORLD_OBSTACLE;
         }
         x=nx; y=ny;
     }
     g_x=x; g_y=y;
-    if(ox)*ox=g_x; if(oy)*oy=g_y;
+    if(ox) *ox = g_x;
+    if(oy) *oy = g_y;
     pthread_mutex_unlock(&mx);
     return WORLD_OK;
 }
