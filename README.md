@@ -111,11 +111,10 @@ Puedes usar cualquiera de los clientes (C o Python). El cliente en Python es la 
 
 ## Puertos y red
 
-- El ejecutable del servidor acepta el puerto como primer argumento. Si tu profesor necesita usar otro valor, basta con arrancar `./server <puerto>` (o `server.exe <puerto>` en Windows) y pasar ese mismo puerto al cliente. No es necesario recompilar.
+- El ejecutable del servidor acepta el puerto como primer argumento. Si se necesita usar otro valor, basta con arrancar `./server <puerto>` (o `server.exe <puerto>` en Windows) y pasar ese mismo puerto al cliente. No es necesario recompilar.
 - El reenvío de puertos que tengas configurado para SSH (por ejemplo, `2222 -> 22`) es independiente: puedes crear otra regla para el puerto del servidor, por ejemplo `15000 -> 15000`, o elegir cualquier puerto libre del host.
 - Si prefieres modo *bridged*, simplemente apunta el cliente a la IP real de la VM y al puerto elegido.
 - Asegúrate de que el firewall de la VM/host permita el puerto seleccionado si está habilitado.
 
 ---
 
-Si quieres, puedo también añadir una pequeña sección de "Pruebas rápidas" con comandos de ejemplo para validar la conexión localmente (server + cliente Python en la misma máquina), o generar un archivo `requirements.txt` (no necesario aquí) y un script para lanzar servidor+cliente para demos.
